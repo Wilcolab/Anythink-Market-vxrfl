@@ -2,6 +2,7 @@ from pathlib import Path
 import sys
 from typing import List, Optional
 
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 
 from app.models.common import DateTimeModelMixin, IDModelMixin
