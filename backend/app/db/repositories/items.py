@@ -170,6 +170,16 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
             )
             # fmt: on
 
+        if title is not None:
+            query_params.append(f"%{title}%")
+            query_params_count += 1
+
+            # fmt: off
+            query = query.where(
+                items.title.ilike(Parameter(query_params_count)),
+            )
+            # fmt: on
+
         if seller:
             query_params.append(seller)
             query_params_count += 1

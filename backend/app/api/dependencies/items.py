@@ -31,6 +31,7 @@ def get_items_filters(
         favorited=favorited,
         limit=limit,
         offset=offset,
+        title=title,
     )
 
 
