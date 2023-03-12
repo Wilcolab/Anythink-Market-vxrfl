@@ -116,6 +116,7 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
         tag: Optional[str] = None,
         seller: Optional[str] = None,
         favorited: Optional[str] = None,
+        title: Optional[str] = None,
         limit: int = 20,
         offset: int = 0,
         requested_user: Optional[User] = None,
@@ -212,7 +213,7 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
         query = query.limit(Parameter(query_params_count + 1)).offset(
             Parameter(query_params_count + 2),
         )
-        query_params.extend([limit, offset])
+        query_params.extend([limit, offset, title])
 
         items_rows = await self.connection.fetch(query.get_sql(), *query_params)
 
