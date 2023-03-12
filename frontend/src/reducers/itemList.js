@@ -1,5 +1,3 @@
-// This file contains the reducer for the item list
-
 import {
   ITEM_FAVORITED,
   ITEM_UNFAVORITED,

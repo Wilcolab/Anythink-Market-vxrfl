@@ -1,5 +1,3 @@
-// This file contains all the action types used in the application
-
 export const APP_LOAD = "APP_LOAD";
 export const REDIRECT = "REDIRECT";
 export const ITEM_SUBMITTED = "ITEM_SUBMITTED";
