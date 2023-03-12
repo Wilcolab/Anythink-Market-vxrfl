@@ -76,17 +76,13 @@ VALUES ((SELECT id FROM items WHERE slug = :slug),
         (SELECT tag FROM tags WHERE tag = :tag))
 ON CONFLICT DO NOTHING;
 
--- name: delete-tags-from-item*!
-DELETE
-FROM items_to_tags
-WHERE item_id = (SELECT id FROM items WHERE slug = :slug);
 
 -- name: update-item<!
 UPDATE items
-SET title       = :new_title,
+SET slug        = :new_slug,
+    title       = :new_title,
     body        = :new_body,
-    description = :new_description,
-    image       = :new_image
+    description = :new_description
 WHERE slug = :slug
   AND seller_id = (SELECT id FROM users WHERE username = :seller_username)
 RETURNING updated_at;
