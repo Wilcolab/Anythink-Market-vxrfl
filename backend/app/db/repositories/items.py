@@ -169,6 +169,10 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
                 ),
             )
             # fmt: on
+            
+        if title is not None:
+            # todo: could be sqli
+            query = query.where(items.title.like(f"%{title}%")) # type: ignore
 
         if title is not None:
             query_params.append(f"%{title}%")
