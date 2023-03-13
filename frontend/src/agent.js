@@ -58,13 +58,12 @@ const Items = {
     requests.get(`/items?seller=${encode(seller)}&${limit(500, page)}`),
   byTag: (tag, page) =>
     requests.get(`/items?tag=${encode(tag)}&${limit(1000, page)}`),
-  search: (query, page) =>
-    requests.get(`/items?title=${encode(query)}&${limit(1000, page)}`),
   del: (slug) => requests.del(`/items/${slug}`),
   favorite: (slug) => requests.post(`/items/${slug}/favorite`),
   favoritedBy: (seller, page) =>
     requests.get(`/items?favorited=${encode(seller)}&${limit(500, page)}`),
   feed: () => requests.get("/items/feed?limit=10&offset=0"),
+  search: (title) => requests.get(`/items?limit=1000&offset=0&title=${title}`),
   get: (slug) => requests.get(`/items/${slug}`),
   unfavorite: (slug) => requests.del(`/items/${slug}/favorite`),
   update: (item) =>
