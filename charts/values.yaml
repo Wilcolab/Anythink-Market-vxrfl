@@ -1,7 +1,3 @@
-clusterEnv: ""
-productionBackendHost: "prod.anythink.market"
-stagingBackendHost: "staging.anythink.market"
-
 backend:
   serviceName: anythink-backend
   containerPort: 3000
@@ -11,7 +7,6 @@ backend:
     port: 80
   image:
     repository: 498915426792.dkr.ecr.us-east-2.amazonaws.com/anythink-backend
-    stagingRepository: 498915426792.dkr.ecr.us-east-2.amazonaws.com/staging-anythink-backend
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
@@ -32,7 +27,6 @@ frontend:
     port: 80
   image:
     repository: 498915426792.dkr.ecr.us-east-2.amazonaws.com/anythink-frontend
-    stagingRepository: 498915426792.dkr.ecr.us-east-2.amazonaws.com/staging-anythink-frontend
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
@@ -45,20 +39,17 @@ frontend:
       memory: 128Mi
 
 database:
-  deploy: true
-  connectionProtocol: postgresql://
-  serviceName: postgres-python
-  containerPort: 5433
-  servicePort: 5432
+  serviceName: mongodb-node
+  containerPort: 27017
+  servicePort: 27017
+  connectionProtocol: mongodb://
   databaseName: anythink-market
   replicaCount: 1
-  env:
-    password: postgres
   service:
     type: ClusterIP
     port: 80
   image:
-    repository: postgres
+    repository: mongo
     pullPolicy: IfNotPresent
     tag: "latest"
   resources:
