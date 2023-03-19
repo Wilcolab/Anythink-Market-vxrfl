@@ -13,6 +13,6 @@ if [ ! -f $1 ]; then
 fi
 
 # Extract the first and last names
-awk -F',' 'tolower($4) ~ /amazon\.com/ {print $3, $2}' $1 > amazon_names.txt
+awk -F',' 'tolower($4) ~ /amazon\.com/ {print $3, $2}' $1 > output_names.txt
 
-echo "The first and last names of individuals whose email addresses contain 'amazon.com' or 'Amazon.com' are saved in amazon_names.txt"
+echo "The first and last names of individuals whose email addresses contain 'amazon.com' or 'Amazon.com' are saved in output_names.txt"
